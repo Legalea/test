@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PayPal - Invia Denaro</title>
+    <title>TikTok Recharge - Invia Denaro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,7 +13,7 @@
         }
 
         header {
-            background-color: #003087;
+            background-color: #010101;
             color: white;
             display: flex;
             align-items: center;
@@ -41,7 +41,7 @@
         .balance {
             text-align: center;
             font-size: 24px;
-            color: #0070ba;
+            color: #fe2c55; /* TikTok red */
             margin-bottom: 20px;
         }
 
@@ -56,7 +56,7 @@
             margin-bottom: 5px;
         }
 
-        input, select {
+        input {
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
@@ -65,7 +65,7 @@
 
         button {
             padding: 15px;
-            background-color: #0070ba;
+            background-color: #69c9d0; /* TikTok blue */
             color: white;
             border: none;
             border-radius: 5px;
@@ -74,7 +74,7 @@
         }
 
         button:hover {
-            background-color: #005ea6;
+            background-color: #40a9af;
         }
 
         .summary {
@@ -83,7 +83,7 @@
         }
 
         .summary h3 {
-            color: #0070ba;
+            color: #fe2c55; /* TikTok red */
         }
 
         /* Stile per il pop-up */
@@ -101,7 +101,7 @@
         }
 
         .popup h2 {
-            color: #0070ba;
+            color: #fe2c55;
             margin-bottom: 15px;
         }
 
@@ -111,7 +111,7 @@
 
         .popup button {
             padding: 10px 20px;
-            background-color: #0070ba;
+            background-color: #69c9d0; /* TikTok blue */
             color: white;
             border: none;
             border-radius: 5px;
@@ -120,7 +120,7 @@
         }
 
         .popup button:hover {
-            background-color: #005ea6;
+            background-color: #40a9af;
         }
 
         /* Stile per l'icona di successo (V verde) */
@@ -134,14 +134,14 @@
 <body>
 
 <header>
-    <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo">
-    <h1>PayPal</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/1024px-TikTok_logo.svg.png" alt="TikTok Logo">
+    <h1>TikTok Recharge</h1>
 </header>
 
 <div class="container">
     <!-- Sezione che mostra il saldo -->
     <div class="balance">
-        Balance: <strong id="balance">€40.000.000,00</strong>
+        Coin Balance: <strong id="balance">40.000.000</strong>
     </div>
 <br>
     <form id="send-money-form">
@@ -151,19 +151,16 @@
         <label for="amount">Amount:</label>
         <input type="number" id="amount" placeholder="" min="1" required>
 
-        <label for="currency">Currency:</label>
-        <select id="currency">
-            <option value="EUR">Euro (€)</option>
-            <option value="USD">Dollar ($)</option>
-            <option value="GBP">Pound (£)</option>
-        </select>
+        <label for="time">Time for transfer (in minutes):</label>
+        <input type="number" id="time" placeholder="" min="1" required>
 
         <button type="submit">Send Money</button>
     </form>
 
     <div class="summary" id="summary" style="display: none;">
         <h3>Riepilogo Transazione</h3>
-        <p>Stai inviando <span id="summary-amount"></span> <span id="summary-currency"></span> a <span id="summary-email"></span></p>
+        <p>Stai inviando <span id="summary-amount"></span> a <span id="summary-email"></span></p>
+        <p>I soldi arriveranno in <span id="summary-time"></span> giorni</p>
     </div>
 </div>
 
@@ -171,8 +168,9 @@
 <div class="popup" id="popup">
     <div class="success-icon">✔️</div> <!-- Icona V verde -->
     <h2>Money sent successfully!</h2>
-    <p>Name <span id="popup-recipient"></span></p>
-    <p>Amount: <span id="popup-amount"></span> <span id="popup-currency"></span></p>
+    <p>Name: <span id="popup-recipient"></span></p>
+    <p>Amount: <span id="popup-amount"></span> EUR</p>
+    <p>Time: <span id="popup-time"></span> Minutes</p>
     <button onclick="closePopup()">OK</button>
 </div>
 
@@ -185,7 +183,7 @@
         // Recupera i dati dal form
         const email = document.getElementById('recipient-email').value || "Not Specified";
         const amount = parseFloat(document.getElementById('amount').value);
-        const currency = document.getElementById('currency').value;
+        const time = document.getElementById('time').value;
 
         // Controlla se l'importo è maggiore del saldo disponibile
         if (amount > saldo) {
@@ -200,7 +198,7 @@
         // Mostra il pop-up con il riepilogo della transazione
         document.getElementById('popup-recipient').textContent = email;
         document.getElementById('popup-amount').textContent = amount;
-        document.getElementById('popup-currency').textContent = currency;
+        document.getElementById('popup-time').textContent = time;
         document.getElementById('popup').style.display = 'block';
     });
 
