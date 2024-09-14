@@ -129,19 +129,28 @@
             color: green;
             margin-bottom: 10px;
         }
+
+        /* Stile per l'immagine piccola della moneta TikTok */
+        .coin-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 50px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/TikTok_logo.svg/1024px-TikTok_logo.svg.png" alt="TikTok Logo">
+    <img src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-512.png" alt="TikTok Logo">
     <h1>TikTok Recharge</h1>
 </header>
 
 <div class="container">
     <!-- Sezione che mostra il saldo -->
     <div class="balance">
-        Coin Balance: <strong id="balance">40.000.000</strong>
+        Balance: <strong id="balance">€40.000.000,00</strong>
     </div>
 <br>
     <form id="send-money-form">
@@ -151,8 +160,8 @@
         <label for="amount">Amount:</label>
         <input type="number" id="amount" placeholder="" min="1" required>
 
-        <label for="time">Time for transfer (in minutes):</label>
-        <input type="number" id="time" placeholder="" min="1" required>
+        <label for="time">Time for transfer (in days):</label>
+        <input type="number" id="time" placeholder="Days" min="1" required>
 
         <button type="submit">Send Money</button>
     </form>
@@ -170,9 +179,12 @@
     <h2>Money sent successfully!</h2>
     <p>Name: <span id="popup-recipient"></span></p>
     <p>Amount: <span id="popup-amount"></span> EUR</p>
-    <p>Time: <span id="popup-time"></span> Minutes</p>
+    <p>Time: <span id="popup-time"></span> days</p>
     <button onclick="closePopup()">OK</button>
 </div>
+
+<!-- Immagine della moneta TikTok -->
+<img class="coin-icon" src="https://cdn3d.iconscout.com/3d/free/thumb/free-tiktok-coin-3d-icon-download-in-png-blend-fbx-gltf-file-formats--brand-name-social-media-symbol-logo-branding-pack-logos-icons-6220601.png?f=webp" alt="TikTok Coin">
 
 <script>
     let saldo = 40000000; // Saldo iniziale in euro
